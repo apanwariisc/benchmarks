@@ -21,8 +21,18 @@ How to compile:
 	"make clean" to clean.
 
 How to run:
-	Both the programs expect one argument from the command line -
-        the number of iterations to be performed. Example run-
+	Both the programs expect two arguments from the command line -
+	1. Access mode
+	2. The number of iterations to be performed.
 
-	./sequential 100000
-	./random     100000
+Access Modes:
+	This argument influences how the buffers will be accessed. Following
+	modes are supported -
+	0 - READ_ONLY - self-explanatory
+	1 - WRITE_ONLY - self-explanatory
+	2 - READ_WRITE - Every byte being touched is read first and then written.
+	3 - WRITE_READ - Every byte being touched is written first and then read.
+
+	Example run-
+	./sequential 0 100000
+	./random     1 100000
