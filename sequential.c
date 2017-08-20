@@ -16,6 +16,7 @@ static void access_buffers(char *b1, char *b2)
 	char var;
 
 	while (start < end) {
+		*start = 'A';
 		var = *start;
 		start += PAGE_SIZE;
 	}
@@ -24,6 +25,7 @@ static void access_buffers(char *b1, char *b2)
 	end = b2 + (1<<30);
 
 	while (start < end) {
+		*start = 'A';
 		var = *start;
 		start += PAGE_SIZE;
 	}
