@@ -21,8 +21,8 @@ How to compile:
 	"make clean" to clean.
 
 How to run:
-	Both the programs expects the number of iterations to be
-	performed from the command line. Example run -
+	Both the programs expect one argument from the command line -
+        the number of iterations to be performed. Example run-
 
 	./sequential 100000
 	./random     100000
