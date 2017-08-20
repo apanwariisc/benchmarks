@@ -1,0 +1,27 @@
+This repository contains two simple c programs written to observe
+TLB behavior and the impact of huge pages on modern processors.
+
+Both the programs start with allocating two buffers of 1GB each
+but references them in different manners.
+
+sequential.c: Iterate over the buffers touching 1 byte from each.
+              An iteration picks one buffer first and traverses it
+              touching 1 byte at 4KB jumps before moving to the
+              second buffer.
+
+random.c:     Iterate over the buffers touching one byte from each.
+              Unlike sequential, traverses both the buffers at the
+	      same time. As a result, successive memory references
+              are expected to be 1GB apaper.
+
+
+How to compile:
+	run "make" to compile.
+	"make clean" to clean.
+
+How to run:
+	Both the programs expects the number of iterations to be
+	performed from the command line. Example run -
+
+	./sequential 100000
+	./random     100000
