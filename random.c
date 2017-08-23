@@ -24,11 +24,6 @@ static void access_buffers(char *b1, char *b2, int mode)
 	char var1, var2;
 	int repeated = 0;
 
-repeat:
-	/* If both the buffers are traversed, return. */
-	if (repeated)
-		return;
-
 	while (start1 < end1) {
 		if (mode == MODE_READ_ONLY) {
 			var1 = *start1;
