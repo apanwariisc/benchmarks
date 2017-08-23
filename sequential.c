@@ -26,8 +26,6 @@ static void access_buffers(char *b1, char *b2, int mode)
 
 repeat:
 	while (start < end) {
-		if (start == b2)
-			printf("Starting with second buffer\n");
 		if (mode == MODE_READ_ONLY)
 			var = *start;
 		else if (mode == MODE_WRITE_ONLY)
