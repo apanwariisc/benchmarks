@@ -25,11 +25,9 @@ static void access_buffers(char *b1, char *b2, int mode)
 	int repeated = 0;
 
 repeat:
-	/* If both the buffers are traversed, return. */
-	if (repeated)
-		return;
-
 	while (start < end) {
+		if (start == b2)
+			printf("Starting with second buffer\n");
 		if (mode == MODE_READ_ONLY)
 			var = *start;
 		else if (mode == MODE_WRITE_ONLY)
@@ -47,6 +45,11 @@ repeat:
 	/* Prepare pointers to traverse the second buffer.*/
 	start = b2;
 	end = b2 + (1<<30);
+	
+	/* If both the buffers are traversed, return. */
+	if (repeated)
+		return;
+	
 	repeated = 1;
 	goto repeat;
 
