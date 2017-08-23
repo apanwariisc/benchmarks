@@ -13,7 +13,9 @@
 
 /*
  * Touch first byte of each 4KB region successively
- * from both the buffers.
+ * from both the buffers. We do not care about address
+ * alignment here as PAZE_SIZE would always ensure we are
+ * actually moving to the next physical page.
  */
 static void access_buffers(char *b1, char *b2, int mode)
 {
@@ -53,7 +55,7 @@ repeat:
 }
 
 /*
- * Touch pages to force page allocation.
+ * Touch pages to force page allocation and warm the cache.
  */
 static void do_fault_buffer(char *buff)
 {

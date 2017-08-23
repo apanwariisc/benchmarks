@@ -13,7 +13,9 @@
 
 /*
  * Touch first byte of each 4KB region successively
- * from both the buffers.
+ * from both the buffers. No need to worry about the
+ * address alignement as PAGE_SIZE jump will always
+ * land us on the next physical memory frame.
  */
 static void access_buffers(char *b1, char *b2, int mode)
 {
@@ -54,7 +56,7 @@ repeat:
 }
 
 /*
- * Touch pages to force page allocation.
+ * Touch pages to force page allocation and warm the cache.
  */
 static void do_fault_buffer(char *buff)
 {
